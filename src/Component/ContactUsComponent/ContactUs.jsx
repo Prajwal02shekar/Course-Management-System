@@ -1,56 +1,75 @@
-import axios from 'axios';
-import React, { useState } from 'react'
-import { toast } from 'react-toastify';
+import React, { useState } from "react";
+import "./contactus.css";
 
 const ContactUs = () => {
-    let [formData, setFormData] = useState({
+    const [formData, setFormData] = useState({
         name: "",
         email: "",
+        phoneNumber: "",
         message: "",
-        phoneNumber: ""
-    })
-    let { name, email, phoneNumber, message } = formData;
+    });
 
-    let handleChange = (e) => {
-        let { name, value } = e.target;
+    const handleChange = (e) => {
+        const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
-    }
-    let handleSubmit = (e) => {
-        e.preventDefault();
-        axios.post('http://localhost:3000/enquiry', formData)
-            .then((res) => {
-                toast.success("Your Query has been submitted successfully")
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-        console.log(formData);
+    };
 
-    }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log("Form Data:", formData);
+        setFormData({ name: "", email: "", message: "", phoneNumber: "" });
+    };
+
     return (
-        <div>
+        <div className="contact-container">
             <div>
-                <h3>Contact Us</h3>
-                <p>#384 Sai Raksha Enclave ,RR Nagar </p>
-                <p>+91 8095460172</p>
-                <p>prajwalpavan01@gmail.com</p>
+                <h2>Contact US</h2>
+                <p> <i className="fas fa-map-marker-alt"></i> #384 Sai Raksha Enclave ,RR Nagar ,Bangalore</p>
+                <p> <i className="fas fa-phone-alt"></i> Phone: +91 8095460172</p>
+                <p> <i className="fas fa-envelope"></i>     Email: prajwalpavan01@gmail.com</p>
 
             </div>
-            <div>
-                <form action="" onSubmit={handleSubmit}>
-                    <label>Name:</label>
-                    <input type="text" name='name' required placeholder='Enter your Name' value={name} onChange={handleChange} />
-                    <label>Email:</label>
-                    <input type="email" name='email' required placeholder='Enter your Email id' value={email} onChange={handleChange} />
-                    <label>Phone Number:</label>
-                    <input type="tel" name='phoneNumber' placeholder='Enter your Phone Number' value={phoneNumber} onChange={handleChange} />
-                    <label>Message:</label>
-                    <textarea rows={5} cols={44} name='message' placeholder='Please Write your Query?' value={message} onChange={handleChange}></textarea>
-                    <button>Submit Query</button>
+            <div className="contact-form">
+                <h2>Send Us a Message</h2>
+                <form onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        placeholder="Your Name"
+                        required
+                    />
+                    <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="Your Email"
+                        required
+                    />
+                    <input
+                        type="number"
+                        name="phoneNumber"
+                        value={formData.phoneNumber}
+                        onChange={handleChange}
+                        placeholder="Your Phone Number"
+                        required
+                    />
+                    <textarea
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        placeholder="Your Message"
+                        rows={5}
+                        cols={45}
+                        required
+                    ></textarea>
+                    <button type="submit">Send Message</button>
                 </form>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default ContactUs
+export default ContactUs;

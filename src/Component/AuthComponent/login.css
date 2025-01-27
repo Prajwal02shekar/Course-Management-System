@@ -4,9 +4,6 @@
     align-items: center;
     justify-content: center;
     height: 90vh;
-    /* margin: 150px 200px; */
-    background-color: #f9f9f9;
-    font-family: Arial, sans-serif;
 }
 
 .login-container h1 {
