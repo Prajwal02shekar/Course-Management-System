@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./contactus.css";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
 
 const ContactUs = () => {
     const [formData, setFormData] = useState({
@@ -17,11 +19,21 @@ const ContactUs = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("Form Data:", formData);
+        axios.post(`http://localhost:3000/enquiry`, formData)
+            .then((res) => {
+                console.log(res.data);
+                toast.success("Our Team will reach as soon as possible")
+
+            })
+            .catch((err) => {
+                console.log(err)
+            })
         setFormData({ name: "", email: "", message: "", phoneNumber: "" });
     };
 
     return (
         <div className="contact-container">
+            <ToastContainer />
             <div>
                 <h2>Contact US</h2>
                 <p> <i className="fas fa-map-marker-alt"></i> #384 Sai Raksha Enclave ,RR Nagar ,Bangalore</p>

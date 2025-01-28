@@ -1,0 +1,51 @@
+.founder-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 40px;
+    flex-wrap: wrap;
+}
+
+.founder-image img {
+    width: 280px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.founder-content {
+    max-width: 600px;
+    margin-left: 40px;
+}
+
+.founder-content h2 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.founder-content p {
+    margin: 10px 0;
+    color: #333;
+}
+
+.founder-name {
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.know-more-btn {
+    background-color: #ff7f0e;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.know-more-btn:hover {
+    background-color: #e06b00;
+}
